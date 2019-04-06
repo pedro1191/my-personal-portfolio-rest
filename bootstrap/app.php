@@ -80,6 +80,9 @@ $app->singleton(
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
+// Flipbox (it should be disabled in production)
+$app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
+
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes
