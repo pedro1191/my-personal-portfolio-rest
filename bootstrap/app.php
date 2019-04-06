@@ -21,7 +21,7 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 
-// $app->withFacades();
+$app->withFacades();
 
 // $app->withEloquent();
 
@@ -85,6 +85,10 @@ $app->register(Dingo\Api\Provider\LumenServiceProvider::class);
 
 // Flipbox (it should be disabled in production)
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
+
+// Email
+$app->register(Illuminate\Mail\MailServiceProvider::class);
+$app->configure('mail');
 
 /*
 |--------------------------------------------------------------------------
