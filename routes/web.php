@@ -29,16 +29,34 @@ $api->version('v1', [
      * Unauthenticated Routes
      */
 
+    // Auth
+    $api->post('/auth/login', ['uses' => 'AuthController@login', 'as' => 'api.auth.login']);
+
     // Message
     $api->post('/messages', ['uses' => 'MessageController@store', 'as' => 'api.messages.store']);
-
-    // Email
-    $api->post('/emails/send', ['uses' => 'EmailController@send', 'as' => 'api.emails.send']);
 
     // Project
     $api->get('/projects', ['uses' => 'ProjectController@index', 'as' => 'api.projects.index']);
     $api->get('/projects/{id}', ['uses' => 'ProjectController@show', 'as' => 'api.projects.show']);
-    $api->post('/projects', ['uses' => 'ProjectController@store', 'as' => 'api.projects.store']);
-    $api->put('/projects/{id}', ['uses' => 'ProjectController@update', 'as' => 'api.projects.update']);
-    $api->delete('/projects/{id}', ['uses' => 'ProjectController@destroy', 'as' => 'api.projects.destroy']);
+
+    /**
+     * Authenticated Routes
+     */
+    $api->group([
+        'middleware' => ['api.auth'],
+    ], function ($api) {
+
+        // Auth
+        $api->get('/auth/me', ['uses' => 'AuthController@me', 'as' => 'api.auth.me']);
+        $api->put('/auth/refresh', ['uses' => 'AuthController@refresh', 'as' => 'api.auth.refresh']);
+        $api->delete('/auth/logout', ['uses' => 'AuthController@logout', 'as' => 'api.auth.logout']);
+
+        // Email
+        $api->post('/emails/send', ['uses' => 'EmailController@send', 'as' => 'api.emails.send']);
+
+        // Project
+        $api->post('/projects', ['uses' => 'ProjectController@store', 'as' => 'api.projects.store']);
+        $api->put('/projects/{id}', ['uses' => 'ProjectController@update', 'as' => 'api.projects.update']);
+        $api->delete('/projects/{id}', ['uses' => 'ProjectController@destroy', 'as' => 'api.projects.destroy']);
+    });
 });

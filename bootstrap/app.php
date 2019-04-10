@@ -84,6 +84,9 @@ $app->middleware([
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
+// JWT
+$app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
+
 // Dingo API
 $app->register(Dingo\Api\Provider\LumenServiceProvider::class);
 
