@@ -34,4 +34,11 @@ $api->version('v1', [
 
     // Email
     $api->post('/emails/send', ['uses' => 'EmailController@send', 'as' => 'api.emails.send']);
+
+    // Project
+    $api->get('/projects', ['uses' => 'ProjectController@index', 'as' => 'api.projects.index']);
+    $api->get('/projects/{id}', ['uses' => 'ProjectController@show', 'as' => 'api.projects.show']);
+    $api->post('/projects', ['uses' => 'ProjectController@store', 'as' => 'api.projects.store']);
+    $api->put('/projects/{id}', ['uses' => 'ProjectController@update', 'as' => 'api.projects.update']);
+    $api->delete('/projects/{id}', ['uses' => 'ProjectController@destroy', 'as' => 'api.projects.destroy']);
 });
