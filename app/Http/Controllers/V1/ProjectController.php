@@ -31,8 +31,8 @@ class ProjectController extends Controller
             'result' => ['sometimes', 'in:paginated,all']
         ]);
 
-        $orderBy = $request->input('orderBy') ?? 'id';
-        $orderDirection = $request->input('orderDirection') ?? 'desc';
+        $orderBy = $request->input('orderBy') ?? 'order';
+        $orderDirection = $request->input('orderDirection') ?? 'asc';
         $result = $request->input('result') ?? 'all';
 
         $query = $this->project
@@ -173,7 +173,7 @@ class ProjectController extends Controller
 
     /**
      * Generate base64 image string
-     * 
+     *
      * @param $image
      * @return string
      */
