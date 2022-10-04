@@ -14,8 +14,8 @@ class MessageController extends Controller
 {
     /**
      * Store a newly created resource in storage.
-     * 
-     * @param  \Illuminate\Http\Request  $request 
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -35,7 +35,7 @@ class MessageController extends Controller
 
         // Everything OK
         return response()->json([
-            'message' => 'Your message was sent successfully.',
+            'message' => 'Your message has been sent successfully.',
             'status_code' => Response::HTTP_OK
         ], Response::HTTP_OK);
     }
