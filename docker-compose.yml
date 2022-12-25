@@ -29,4 +29,4 @@ services:
       - /home/computer/Work/projects/personal_databases/.mysql/my-personal-portfolio-rest:/var/lib/mysql
 
     environment:
-      MYSQL_ROOT_PASSWORD: computer@1.6
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
