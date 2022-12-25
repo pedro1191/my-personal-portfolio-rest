@@ -14,6 +14,7 @@ jobs:
         CONTAINER: my-personal-portfolio-back
         DOT_ENV: ${{ secrets.DOT_ENV }}
         IMAGE: my-personal-portfolio-back
+        PORT: 8082
         TAG: latest
         WORKDIR: portfolio/php_projects/my-personal-portfolio-rest
       with:
@@ -21,11 +22,11 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT }}
-        envs: CONTAINER, DOT_ENV, IMAGE, TAG, WORKDIR
+        envs: CONTAINER, DOT_ENV, IMAGE, PORT, TAG, WORKDIR
         script: |
           cd $WORKDIR
           git pull
-          echo $DOT_ENV >> .env
+          echo $DOT_ENV | base64 -d > .env
           source .env
           docker build -t $IMAGE:$TAG .
           docker stop $CONTAINER
