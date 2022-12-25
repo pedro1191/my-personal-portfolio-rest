@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\EmailController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
@@ -45,9 +44,6 @@ Route::group([
     Route::get('/auth/me', [AuthController::class, 'me']);
     Route::put('/auth/refresh', [AuthController::class, 'refresh']);
     Route::delete('/auth/logout', [AuthController::class, 'logout']);
-
-    // Email
-    Route::post('/emails/send', [EmailController::class, 'send']);
 
     // Project
     Route::post('/projects', [ProjectController::class, 'store']);
