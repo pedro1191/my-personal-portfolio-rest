@@ -3,7 +3,8 @@ services:
   web:
     build:
       context: .
-      dockerfile: web.dockerfile
+      dockerfile: ./.docker/web.dockerfile
+    container_name: my-personal-portfolio-web
 
     ports:
         - 8082:80
@@ -19,6 +20,7 @@ services:
 
   db:
     image: mysql:5.7
+    container_name: my-personal-portfolio-db
 
     ports:
       - 3306:3306
@@ -27,4 +29,4 @@ services:
       - /home/computer/Work/projects/personal_databases/.mysql/my-personal-portfolio-rest:/var/lib/mysql
 
     environment:
-      MYSQL_ROOT_PASSWORD: computer@1.6
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
