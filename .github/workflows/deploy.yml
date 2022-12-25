@@ -25,7 +25,7 @@ jobs:
         envs: CONTAINER_NAME, CONTAINER_PORT, DOT_ENV, IMAGE, TAG, WORKDIR
         script: |
           cd $WORKDIR
-          git pull
+          git pull origin master
           echo $DOT_ENV | base64 -d > .env
           source .env
           docker build -t $IMAGE:$TAG .
