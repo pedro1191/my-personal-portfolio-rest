@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,7 +12,12 @@ class Project extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'image', 'live_demo_link', 'source_code_link', 'order'
+        'description',
+        'image',
+        'live_demo_link',
+        'name',
+        'order',
+        'source_code_link',
     ];
 
     /**
