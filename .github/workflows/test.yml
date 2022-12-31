@@ -1,11 +1,8 @@
-name: Tests
+name: Test Workflow
 
 on:
-  push:
-    branches:
-      - master
-      - '*.x'
   pull_request:
+    branches: [ master ]
   schedule:
     - cron: '0 0 * * *'
 
@@ -19,7 +16,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: ['8.0', 8.1, 8.2]
+        php: [8.2]
 
     name: PHP ${{ matrix.php }}
 
@@ -34,14 +31,17 @@ jobs:
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite
           coverage: none
 
-      # - name: Install Composer dependencies
-      #   run: composer install --prefer-dist --no-interaction --no-progress
+      - name: Install Composer dependencies
+        run: composer install --ignore-platform-reqs --prefer-dist --no-interaction --no-progress --no-plugins --no-scripts
 
-      # - name: Copy environment file
-      #   run: cp .env.example .env
+      - name: Copy environment file
+        run: cp .env.example .env
 
-      # - name: Generate app key
-      #   run: php artisan key:generate
+      - name: Generate app key
+        run: php artisan key:generate
 
-      # - name: Execute tests
-      #   run: vendor/bin/phpunit
+      - name: Generate jwt key
+        run: php artisan jwt:secret -f
+
+      - name: Execute tests
+        run: vendor/bin/phpunit
