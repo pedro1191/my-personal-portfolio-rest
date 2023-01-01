@@ -32,7 +32,7 @@ class MessageSent extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Contact from Portfolio',
+            subject: 'Contact from ' . config('app.name'),
         );
     }
 
