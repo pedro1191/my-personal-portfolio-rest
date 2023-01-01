@@ -17,7 +17,7 @@ class ProjectSeeder extends Seeder
     {
         DB::table('projects')->insert([
             'name' => 'FoodClub',
-            'description' => '<p>This is a complete sample application that shows things divided by categories. It has a dashboard with authentication where the administrator can manage them and a contact page to send messages. The "theme" chosen here relates to culinary, but it could have been anything else.</p><p>Overall, it was built using the Vue.js and Laravel frameworks. Please refer to its source code link above for documentation and technical details.</p>',
+            'description' => '<p>This is a complete sample application that shows items divided by categories. It has a dashboard with authentication where the administrator can manage them and a contact page to send messages. The "theme" chosen here relates to culinary, but it could have been anything else.</p><p>Overall, it was built using the Vue.js and Laravel frameworks. Please refer to its source code link above for documentation and technical details.</p>',
             'image' => Base64::getBase64ImageFromResources('FoodClub.png'),
             'live_demo_link' => 'https://foodclub.pedrohsalmeida.com',
             'source_code_link' => 'https://github.com/pedro1191/my-products-vue',
